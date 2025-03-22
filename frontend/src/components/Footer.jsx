@@ -42,12 +42,12 @@ const Footer = () => {
 const styles = {
   footer: {
     backgroundColor: '#FFFFFF',
-    color: '#5271ff',
+    color: '#4a90e2',
     padding: '40px 0',
     bottom: 0,
     width: '100%',
     textAlign: 'center',
-    boxShadow: '0 -4px 5px rgba(0,0,0,0.3)',
+    
   },
   container: {
     display: 'flex',
@@ -66,7 +66,7 @@ const styles = {
     maxWidth: '400px',
   },
   heading: {
-    color: '#5271ff',
+    color: '#4a90e2',
     fontSize: '1.2rem',
     marginBottom: '10px',
   },

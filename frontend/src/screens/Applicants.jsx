@@ -6,6 +6,8 @@ import { useUpdateApplicationStatusMutation } from "../slices/applicantsApiSlice
 import Loader from "../components/Loader";
 import ErrorScreen from "../screens/ErrorScreen";
 import { Container, Row, Col, Button, Card, Badge} from "react-bootstrap";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 const Applicants = () => {
   const { jobId } = useParams();
@@ -43,6 +45,26 @@ const Applicants = () => {
     }
   };
 
+  const exportToExcel = () => {
+    const formattedData = applicants.map((app) => ({
+      Name: app.applicant.name,
+      Email: app.applicant.email,
+      Phone: app.applicant.phone || "N/A",
+      Location: app.applicant.location || "N/A",
+      Status: app.status,
+      Resume: app.applicant.resume || "No Resume",
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(formattedData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Applicants");
+
+    const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+    const dataBlob = new Blob([excelBuffer], { type: "application/octet-stream" });
+
+    saveAs(dataBlob, "applicants_data.xlsx");
+  };
+
   if (isLoading || !applicants) {
     return <Loader text="Loading applicants..." />;
   }
@@ -68,6 +90,10 @@ const Applicants = () => {
   return (
     <Container className="py-4">
       <h2 className="mb-4 fw-bold">Applicants</h2>
+
+      <Button variant="success" className="mb-3" onClick={exportToExcel}>
+        📥 Download Excel
+      </Button>
 
       <Card className="shadow-sm">
         <Card.Body>

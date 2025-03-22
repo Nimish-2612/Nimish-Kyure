@@ -67,21 +67,44 @@ const HomeScreen = () => {
 
   return (
     <div style={{ fontFamily: 'Poppins, sans-serif', backgroundColor: '#f8f9fa' }}>
-      <section className='bg-white text-primary py-5 d-flex align-items-center justify-content-center' style={{ minHeight: '400px' }}>
-        <div>
-          <h1 className='fw-bold display-4'>Explore Internships & Courses</h1>
-          <p className='fs-5 mt-3 text-black'>Find the best opportunities to enhance your career.</p>
-          <Button variant='light' size='lg' className='fw-bold mt-3 bg-primary text-white' onClick={() => navigate('/jobs')}>
-            Get Started
-          </Button>
+      <section
+        className="text-primary py-5 d-flex align-items-center justify-content-center"
+        style={{
+          minHeight: "400px",
+          background: "linear-gradient(to bottom, #4a90e2, #f8f9fa)",
+        }}
+      >
+        <div
+          className="d-flex align-items-center justify-content-center gap-5"
+          style={{ maxWidth: "80%", width: "100%" }}
+        >
+          <div className="text-container" style={{ maxWidth: "45%" }}>
+            <h1 className="fw-bold display-4 text-white">
+              UNLOCK YOUR POTENTIAL WITH SKILLPACT
+            </h1>
+            <p className="fs-5 mt-3 text-black">
+              Our platform connects your skills to internships and hiring opportunities enabling personal and professional growth.
+            </p>
+            <Button
+              variant="light"
+              size="lg"
+              className="fw-bold mt-3 bg-primary text-white"
+              onClick={() => navigate("/jobs")}
+            >
+              Get Started
+            </Button>
+          </div>
+
+          <img
+            src="https://res.cloudinary.com/dxrwo0s8o/image/upload/v1742660783/image-removebg-preview_4_rrugt9.png"
+            alt="Hero"
+            className="img-fluid"
+            style={{ maxHeight: "400px", width: "auto", borderRadius: "10px" }}
+          />
         </div>
-        <img 
-          src='https://bootstrapmade.com/content/demo/iLanding/assets/img/illustration-1.webp' 
-          alt='Hero' 
-          className='img-fluid ms-5' 
-          style={{ maxHeight: '300px', borderRadius: '10px' }} 
-        />
       </section>
+
+
 
       {/* <Container fluid className='my-5'>
         <div className='text-center p-5 rounded' style={{ background: 'linear-gradient(to right,rgb(66, 63, 165), #333)', color: 'white' }}>
@@ -134,7 +157,7 @@ const HomeScreen = () => {
       </Container>
 
       <Container fluid className='my-5'>
-        <div className='text-center p-5 rounded' style={{ background: 'linear-gradient(to right,rgb(81, 104, 194), #333)', color: 'white' }}>
+        <div className='text-center p-5 rounded' style={{ background: ' #4a90e2', color: 'white' }}>
           <h3 className='fw-bold mb-3'>Want to post jobs and hire skilled workforce?</h3>
           <p className='fs-5'>Register your company soon!</p>
           <Button variant='light' size='lg' className='fw-bold' onClick={() => navigate('/create-company')}>

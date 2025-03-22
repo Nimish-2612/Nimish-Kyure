@@ -1,5 +1,5 @@
 import { UserNotifications } from "../models/notificationModel.js";
-const MAX_NOTIFICATIONS = 2; // Limit per user
+const MAX_NOTIFICATIONS = 7; // Limit per user
 
 async function addNotification(userId, message) {
 	const userNotif = await UserNotifications.findOneAndUpdate(

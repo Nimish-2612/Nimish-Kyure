@@ -62,7 +62,7 @@ const styles = {
   company: {
     fontFamily: 'Poppins',
     fontSize: '18px',
-    fontWeight: 400,
+    fontWeight: 600,
     color: '#000000',
     margin: 0,
   },
@@ -71,7 +71,7 @@ const styles = {
     fontSize: '22px',
     fontWeight: 800,
     lineHeight: '26px',
-    color: '#5271ff',
+    color: '#4a90e2',
     margin: '0 0 16px 0',
   },
   role: {
@@ -116,7 +116,7 @@ const styles = {
 
 const hoverEffect = {
   cardHover: {
-    boxShadow: '0 0 10px rgba(0, 0, 255, 0.1), 0 0 20px rgba(0, 0, 255, 0.2)',
+    boxShadow: '0 0 20px rgba(74, 144, 226, 0.1), 0 0 20px rgba(74, 144, 226, 0.2)',
     transform: 'scale(1.05)',
   },
   clickToApplyHover: {
