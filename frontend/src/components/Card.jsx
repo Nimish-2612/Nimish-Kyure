@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Card = ({ image, title, role, location, company, duration, startDate, applicants, onClick }) => {
+const Card = ({ image, title, role, location, company, duration, startDate, applicants, difficulty, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ const Card = ({ image, title, role, location, company, duration, startDate, appl
       onMouseLeave={() => setIsHovered(false)}
     >
       <div style={styles.headerContainer}>
-        {/* <img src={image} alt={`${title} image`} style={styles.image} /> */}
+        <img src={image} alt={`${title} image`} style={styles.largeImage} />
         <p style={styles.company}>{company}</p>
       </div>
       <h3 style={styles.title}>{title}</h3>
@@ -26,6 +26,9 @@ const Card = ({ image, title, role, location, company, duration, startDate, appl
       {applicants !== undefined && (
         <p style={styles.applicants}>Applicants: {applicants}</p>
       )}
+      <div style={styles.difficultyContainer}>
+        <p style={styles.difficulty}>Difficulty: {difficulty}</p>
+      </div>
       <p
         style={{
           ...styles.clickToApply,
@@ -57,9 +60,9 @@ const styles = {
     gap: '12px',
     marginBottom: '16px',
   },
-  image: {
-    width: '50px',
-    height: '50px',
+  largeImage: {
+    width: '100%',
+    height: '80%',
     background: '#D9D9D9',
     borderRadius: '8px',
   },
@@ -113,6 +116,20 @@ const styles = {
     color: '#000000',
     margin: '8px 0',
   },
+  difficultyContainer: {
+    marginTop: '12px',
+    padding: '10px',
+    background: '#f4f4f4',
+    borderRadius: '8px',
+    textAlign: 'left',
+  },
+  difficulty: {
+    fontFamily: 'Poppins',
+    fontSize: '16px',
+    fontWeight: 600,
+    color: '#333',
+    margin: 0,
+  },
   clickToApply: {
     fontFamily: 'Poppins',
     fontSize: '14px',
@@ -144,6 +161,7 @@ Card.propTypes = {
   duration: PropTypes.string,
   startDate: PropTypes.string,
   applicants: PropTypes.number,
+  difficulty: PropTypes.string.isRequired,
   onClick: PropTypes.func
 };
 

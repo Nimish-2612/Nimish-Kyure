@@ -92,9 +92,7 @@ const CourseScreen = () => {
                 className="course-card-custom"
                 image="https://placehold.co/400"
                 title={course.courseTitle}
-                role={course.role || "Role Not Specified"}
-                location={course.location || "Location Not Specified"}
-                company={course.company || "Company Not Specified"}
+                difficulty='Not defined'
                 onClick={() => navigate(`/courses/${course._id}`)}
               />
             ))
