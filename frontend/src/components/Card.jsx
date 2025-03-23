@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const Card = ({ image, title, role, location, company, duration, startDate, onClick }) => {
+const Card = ({ image, title, role, location, company, duration, startDate, applicants, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -22,6 +23,9 @@ const Card = ({ image, title, role, location, company, duration, startDate, onCl
       {duration && <p style={styles.duration}>Duration: {duration}</p>}
       {location && <p style={styles.location}>Location: {location}</p>}
       {startDate && <p style={styles.startDate}>Starts on: {startDate}</p>}
+      {applicants !== undefined && (
+        <p style={styles.applicants}>Applicants: {applicants}</p>
+      )}
       <p
         style={{
           ...styles.clickToApply,
@@ -102,6 +106,13 @@ const styles = {
     color: '#000000',
     margin: '8px 0',
   },
+  applicants: {
+    fontFamily: 'Poppins',
+    fontSize: '16px',
+    fontWeight: 400,
+    color: '#000000',
+    margin: '8px 0',
+  },
   clickToApply: {
     fontFamily: 'Poppins',
     fontSize: '14px',
@@ -122,6 +133,18 @@ const hoverEffect = {
   clickToApplyHover: {
     opacity: 1,
   },
+};
+
+Card.propTypes = {
+  image: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  role: PropTypes.string,
+  location: PropTypes.string,
+  company: PropTypes.string,
+  duration: PropTypes.string,
+  startDate: PropTypes.string,
+  applicants: PropTypes.number,
+  onClick: PropTypes.func
 };
 
 export default Card;
