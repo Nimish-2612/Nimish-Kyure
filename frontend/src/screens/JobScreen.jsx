@@ -197,6 +197,7 @@ const JobScreen = () => {
               .filter((job) => job.active) // Ensure only active jobs are shown
               .map((job) => (
                 <Card
+                  type="job"
                   key={job._id}
                   className="job-card-custom"
                   title={job.title}

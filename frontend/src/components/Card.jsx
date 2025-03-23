@@ -1,7 +1,19 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Card = ({ image, title, role, location, company, duration, startDate, applicants, difficulty, onClick }) => {
+const Card = ({ 
+  type, // 'course' or 'job'
+  image, 
+  title, 
+  role, 
+  location, 
+  company, 
+  duration, 
+  startDate, 
+  applicants, 
+  difficulty, 
+  onClick 
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -15,7 +27,9 @@ const Card = ({ image, title, role, location, company, duration, startDate, appl
       onMouseLeave={() => setIsHovered(false)}
     >
       <div style={styles.headerContainer}>
-        <img src={image} alt={`${title} image`} style={styles.largeImage} />
+        {type === 'course' && (
+          <img src={image} alt={`${title} image`} style={styles.largeImage} />
+        )}
         <p style={styles.company}>{company}</p>
       </div>
       <h3 style={styles.title}>{title}</h3>
@@ -26,9 +40,11 @@ const Card = ({ image, title, role, location, company, duration, startDate, appl
       {applicants !== undefined && (
         <p style={styles.applicants}>Applicants: {applicants}</p>
       )}
-      <div style={styles.difficultyContainer}>
-        <p style={styles.difficulty}>Difficulty: {difficulty}</p>
-      </div>
+      {type === 'course' && (
+        <div style={styles.difficultyContainer}>
+          <p style={styles.difficulty}>Difficulty: {difficulty}</p>
+        </div>
+      )}
       <p
         style={{
           ...styles.clickToApply,
@@ -153,6 +169,7 @@ const hoverEffect = {
 };
 
 Card.propTypes = {
+  type: PropTypes.oneOf(['course', 'job']).isRequired,
   image: PropTypes.string,
   title: PropTypes.string.isRequired,
   role: PropTypes.string,
@@ -161,8 +178,8 @@ Card.propTypes = {
   duration: PropTypes.string,
   startDate: PropTypes.string,
   applicants: PropTypes.number,
-  difficulty: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  difficulty: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Card;

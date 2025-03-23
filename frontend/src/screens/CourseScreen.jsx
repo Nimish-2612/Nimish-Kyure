@@ -88,6 +88,7 @@ const CourseScreen = () => {
           {sortedCourses.length > 0 ? (
             sortedCourses.map((course) => (
               <Card
+                type="course"
                 key={course._id}
                 className="course-card-custom"
                 image="https://placehold.co/400"
